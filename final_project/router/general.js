@@ -66,6 +66,15 @@ public_users.get('/author/:author', function (req, res) {
     res.send(authoredBooks);
 });
 
+public_users.get('/books/author/:author', async function (req, res) {
+    try {
+        const response = await axios.get(`http://localhost:5000/author/${req.params.author}`);
+        res.send(response.data);
+    } catch (error) {
+        res.status(500).send("Error retrieving books by author");
+    }
+})
+
 // Get all books based on title
 public_users.get('/title/:title', function (req, res) {
     //Write your code here
