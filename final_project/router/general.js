@@ -79,6 +79,15 @@ public_users.get('/title/:title', function (req, res) {
     res.send(titledBooks);
 });
 
+public_users.get('/books/title/:title', async function (req, res) {
+    try {
+        const response = await axios.get(`http://localhost:5000/title/${req.params.title}`);
+        res.send(response.data);
+    } catch (error) {
+        res.status(500).send("Error retrieving books by title");
+    }
+});
+
 //  Get book review
 public_users.get('/review/:isbn', function (req, res) {
     //Write your code here
