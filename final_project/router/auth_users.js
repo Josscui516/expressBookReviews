@@ -9,22 +9,14 @@ const isValid = (username) => { //returns boolean
     let userswithsamename = users.filter((user) => {
         return user.username === username;
     });
-    if (userswithsamename.length > 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return userswithsamename.length > 0;
 }
 
 const authenticatedUser = (username, password) => { //returns boolean
     let validusers = users.filter((user) => {
         return (user.username === username && user.password === password);
     });
-    if (validusers.length > 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return validusers.length > 0;
 }
 
 //only registered users can login
